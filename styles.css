@@ -1,0 +1,76 @@
+/* Full-viewport hero with fixed background image and no scroll */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  overflow: hidden; /* disable scrolling */
+  font-family: 'Cormorant Garamond', serif;
+  color: #fff;
+  background-image: url('IMG_3699.JPG');
+  background-size: cover; /* full cover */
+  background-repeat: no-repeat;
+  background-position: center calc(50% - 30vh); /* center then shift up an additional 20vh total */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 25vh; /* 1/4 down the page */
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 7vw, 6rem);
+  white-space: nowrap; /* keep the title on one line */
+  max-width: 92vw;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(37.5vh + 8vh); /* shifted down ~8vh */
+  padding: 12px 28px;
+  border: 2px solid rgba(255,255,255,1);
+  background: transparent; /* fully clear inside to show background image */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 2px; /* sharper corners */
+  font-size: 1.2rem; /* slightly larger button text */
+  backdrop-filter: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+@media (max-width: 520px) {
+  body {
+    background-position: center top; /* ensure full cover focuses on the top/center for phones */
+    background-size: cover;
+    background-attachment: scroll;
+  }
+  .title {
+    font-size: clamp(1rem, 9vw, 2rem);
+    top: 20vh;
+    max-width: 92vw;
+  }
+  .btn {
+    top: 40vh; /* lower on small screens to sit between title and center */
+    padding: 10px 20px;
+    font-size: 1.1rem;
+  }
+}
